@@ -1,7 +1,7 @@
 public class Orman extends Mekanlar{
 
-    public Orman(int canavarsayisi, String odul) {
-        super(canavarsayisi, odul);
+    public Orman(String name, int canavarsayisi, String odul) {
+        super(name, canavarsayisi, odul);
         //TODO Auto-generated constructor stub
     }
 
