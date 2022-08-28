@@ -24,6 +24,7 @@ public class Game{
         System.out.println("\n3- Magara ==> Odul: 'Yemek' Ama Dikkat burda zombiler var!");
         System.out.println("\n4- Orman ==> Odul: 'Odun' Ama Dikkat burda vampirler var!");
         System.out.println("\n5- Nehir ==> Odul: 'Su' Ama Dikkat burda ayilar var!");
+        System.out.println("\n6- Maden ==> Odul: 'Cesitli oduller' Ama Dikkat burda ayilar var!");
         System.out.println("\n0- Cikis Yap ==> Oyunu Sonlandir !");
         System.out.print("\nGitmek istediginiz yeri seciniz:\t");
         int selectloc = scanner.nextInt();
@@ -45,6 +46,9 @@ public class Game{
                 break;
             case 5 :
                 mekan = new Nehir(player);
+                break;
+            case 6 :
+                mekan = new Maden(player);
                 break;
             default : 
                 mekan = new GuvenliEv(player);

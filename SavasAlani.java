@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public abstract class SavasAlani extends Mekanlar{
@@ -18,6 +19,7 @@ public abstract class SavasAlani extends Mekanlar{
     @Override
     boolean onLocation() {
         int canavarSayisi = this.randomCanavarSayisi();
+
         System.out.println("\nSuan burdasiniz:\t" + this.getName());
         System.out.println("\nDikkatli ol burda  " + canavarSayisi + " tane " 
                                 + this.getCanavarlar().getName() + "  yasiyor.");
@@ -26,6 +28,7 @@ public abstract class SavasAlani extends Mekanlar{
         if(secim.equals("S") && savasma(canavarSayisi)){
            
             System.out.println("\n" + this.getName() + "tum dusmalari yendiniz.");
+
             return true;
             
         }
@@ -46,6 +49,9 @@ public abstract class SavasAlani extends Mekanlar{
                 System.out.print("\n<V> Vur veya <K> Kac  !\t");
                 String secim = scanner.nextLine().toUpperCase();
                 if(secim.equals("V")){
+                    Random  rnd = new Random();
+                    int sansFaktoru = rnd.nextInt(100)+1;
+                    if(sansFaktoru <51){
                     System.out.println("\nSiz vurdunuz !");
                     this.getCanavarlar().setSaglik(this.getCanavarlar().getSaglik() - this.getPlayer().getHasar());
                     afterHit();
@@ -54,6 +60,17 @@ public abstract class SavasAlani extends Mekanlar{
                         this.getPlayer().setSaglik(this.getPlayer().getSaglik() - this.getCanavarlar().getHasar());
                         afterHit();
                     }
+                }else{
+                    System.out.println("\nCanavar size vurdu !");
+                        this.getPlayer().setSaglik(this.getPlayer().getSaglik() - this.getCanavarlar().getHasar());
+                        afterHit();
+                        if(this.getCanavarlar().getSaglik() > 0){
+                            System.out.println("\nSiz vurdunuz !");
+                    this.getCanavarlar().setSaglik(this.getCanavarlar().getSaglik() - this.getPlayer().getHasar());
+                    afterHit();
+                        }
+
+                }
                 } else {
                     return false;
                     }
@@ -65,12 +82,79 @@ public abstract class SavasAlani extends Mekanlar{
                 System.out.println(this.getCanavarlar().getKazanilackPara() + "para kazandiniz.");
                 this.getPlayer().setPara(this.getPlayer().getPara()+this.getCanavarlar().getKazanilackPara());
                 System.out.println("Guncel paraniz:\t" + this.getPlayer().getPara());
+                yilandanHediyeler();
+                String [] oyunBittimi = getPlayer().getEnvanter().getOyunBitirecekEsyalar();
+                String [] konrolBittimi ={};
+                Arrays.fill( konrolBittimi , this.getOdul() );
+                
+                for(String a : oyunBittimi){
+                    System.out.println("Gerekenler" + a);
+                }
+                for(String b : konrolBittimi){
+                    System.out.println("Sizdekiler" + b);
+                }
+                if(Arrays.equals(oyunBittimi, konrolBittimi)){
+                    System.out.println("Oyunu Kazandiniz");
+                    System.out.println("Tebrikler");
+                    System.out.println("Tebrikler");
+                    System.out.println("Tebrikler");
+                    
+                }
+                
+                
             }else {
                 return false;
             }
         }
 
         return true;
+    }
+
+    public static void yilandanHediyeler(){
+
+        Random rnd = new Random();
+        int olasilik = rnd.nextInt(100)+1;
+        int olasilik1 = rnd.nextInt(100)+1;;
+        if(olasilik<46){
+            System.out.println("Hiç Birşey Kazanamadiniz !");
+        }
+        else if(olasilik >45 && olasilik <61){
+            System.out.println("Silah Kazanacaksiniz");
+                if(olasilik1<51){
+                    //this.getPlayer().getEnvanter().setSilah(Silahlar.getSilahlarObjBYID(1));
+                }
+                else if(olasilik1>70){
+                    //kiliv
+                }
+                else{
+                    //tüfek
+                }
+
+        }
+        else if(olasilik>75){
+            System.out.println("Para Kazanacaksiniz");
+            if(olasilik1<51){
+                //tabanca
+            }
+            else if(olasilik1>70){
+                //kiliv
+            }
+            else{
+                //tüfek
+            }
+        }
+        else {
+            System.out.println("Zirh Kazanacaksiniz");
+            if(olasilik1<51){
+                //tabanca
+            }
+            else if(olasilik1>70){
+                //kiliv
+            }
+            else{
+                //tüfek
+            }
+        }
     }
 
     public void afterHit(){

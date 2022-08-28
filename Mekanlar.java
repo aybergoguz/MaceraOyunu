@@ -4,6 +4,7 @@ public abstract class Mekanlar{
 
     private Player player;
     private String name;
+    
     public static Scanner scanner =new Scanner(System.in);
     
     public Mekanlar(Player player, String name) {

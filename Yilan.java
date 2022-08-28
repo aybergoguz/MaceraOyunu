@@ -19,4 +19,6 @@ public class Yilan extends Canavarlar{
         return randomVurus;
     }
 
+   
+
 }
