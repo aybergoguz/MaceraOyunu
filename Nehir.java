@@ -1,8 +1,8 @@
-public class Nehir extends Mekanlar{
+public class Nehir extends SavasAlani{
 
-    public Nehir(String name, int canavarsayisi, String odul) {
-        super(name, canavarsayisi, odul);
-        //TODO Auto-generated constructor stub
+    public Nehir(Player player) {
+        super(player, "Nehir", new Ayi(), "Su",2 );
+        
     }
 
 

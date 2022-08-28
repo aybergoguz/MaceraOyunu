@@ -1,13 +1,24 @@
+import java.util.Scanner;
+
 public abstract class Mekanlar{
 
+    private Player player;
     private String name;
-    private int canavarsayisi;
-    private String odul;
+    public static Scanner scanner =new Scanner(System.in);
     
-    public Mekanlar(String name, int canavarsayisi, String odul) {
+    public Mekanlar(Player player, String name) {
+        this.player = player;
         this.name=name;
-        this.canavarsayisi = canavarsayisi;
-        this.odul = odul;
+    }
+
+    abstract boolean onLocation();
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public String getName() {
@@ -18,19 +29,4 @@ public abstract class Mekanlar{
         this.name = name;
     }
 
-    public int getCanavarsayisi() {
-        return canavarsayisi;
-    }
-
-    public void setCanavarsayisi(int canavarsayisi) {
-        this.canavarsayisi = canavarsayisi;
-    }
-
-    public String getOdul() {
-        return odul;
-    }
-
-    public void setOdul(String odul) {
-        this.odul = odul;
-    }
 } 

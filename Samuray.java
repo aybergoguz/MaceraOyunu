@@ -1,9 +1,9 @@
 public class Samuray extends Karakter{
 
-    public Samuray(String name ,String id, int hasar, int saglik, int para) {
-        super(name ,id, hasar, saglik, para);
-        //TODO Auto-generated constructor stub
-    }
+    public Samuray() {
+        
+        super(1,"Samuray",5, 21, 15);
 
+    }
 
 }

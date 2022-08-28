@@ -1,8 +1,8 @@
-public class Magara extends Mekanlar{
+public class Magara extends SavasAlani{
 
-    public Magara(String name, int canavarsayisi, String odul) {
-        super(name,canavarsayisi, odul);
-        //TODO Auto-generated constructor stub
+    public Magara(Player player) {
+        super(player, "Magara",new Zombi(), "Yemek",3);
+    
     }
 
 

@@ -1,32 +1,23 @@
 public abstract class Karakter{
-
-    private String name;
-    private String id;
+    private int id;
+    private String ad;
     private int hasar;
     private int saglik;
     private int para;
     
-    public Karakter(String name ,String id, int hasar, int saglik, int para) {
-        this.name=name;
+    public Karakter(int id, String ad, int hasar, int saglik, int para) {
+        
         this.id = id;
+        this.ad = ad;
         this.hasar = hasar;
         this.saglik = saglik;
         this.para = para;
     }
-
-    public String getName() {
-        return name;
+    public String getAd() {
+        return ad;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
+    public void setAd(String ad) {
+        this.ad = ad;
     }
     public int getHasar() {
         return hasar;
@@ -46,4 +37,11 @@ public abstract class Karakter{
     public void setPara(int para) {
         this.para = para;
     }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

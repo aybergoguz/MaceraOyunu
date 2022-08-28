@@ -1,8 +1,8 @@
-public class Orman extends Mekanlar{
+public class Orman extends SavasAlani{
 
-    public Orman(String name, int canavarsayisi, String odul) {
-        super(name, canavarsayisi, odul);
-        //TODO Auto-generated constructor stub
+    public Orman(Player player) {
+        super(player,"Orman", new Vampir(), "Odun",3);
+      
     }
 
 
