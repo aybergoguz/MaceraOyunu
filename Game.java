@@ -11,6 +11,7 @@ public class Game{
     String playerName = scanner.nextLine();
    
     Player player = new Player(playerName);
+    
     System.out.println("\n\t" + player.getName() + " Macera Oyununa Hosgeldiniz \n");
     System.out.print("Oyuna baslamak icin karakter seciniz !\n");
     player.selectChar();

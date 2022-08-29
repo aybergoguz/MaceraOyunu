@@ -4,6 +4,15 @@ public class Envanter {
     private Zirhlar zirh;
     private String  [] oyunBitirecekEsyalar; 
     private String [] eldeEdilenEsya;
+    private int index;
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     public String [] getEldeEdilenEsya() {
         return eldeEdilenEsya;
@@ -25,8 +34,9 @@ public class Envanter {
     public Envanter(String [] eldeEdilenEsya) {
         this.silah = new Silahlar("Yumruk", -1, 0, 0);
         this.zirh = new Zirhlar(-1, "atlet", 0, 0);
-        this.oyunBitirecekEsyalar =new String [] {"yemek","odun","su"};
-        this.eldeEdilenEsya=eldeEdilenEsya;
+        this.oyunBitirecekEsyalar = new String [] {"Yemek","Odun","Su"};
+        this.eldeEdilenEsya = new String [3];
+        this.index=0;
     }
 
     public Silahlar getSilah() {

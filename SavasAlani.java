@@ -87,34 +87,45 @@ public abstract class SavasAlani extends Mekanlar{
                 this.getPlayer().setPara(this.getPlayer().getPara()+this.getCanavarlar().getKazanilackPara());
                 System.out.println("Guncel paraniz:\t" + this.getPlayer().getPara());
                 
-                String [] oyunBittimi = this.getPlayer().getEnvanter().getOyunBitirecekEsyalar();
-                String [] konrolBittimi =this.getPlayer().getEnvanter().getEldeEdilenEsya();
-                String odul = this.getOdul();
-                Arrays.fill( konrolBittimi , odul );
-                
-                for(String  a : oyunBittimi){
-                    System.out.println("\nGerekenler:\t" + a);
-                }
-                for(String b : konrolBittimi){
-                    System.out.println("\nSizdekiler\t" + b);
-                }
-                if(Arrays.equals(oyunBittimi, konrolBittimi)){
-                    System.out.println("Oyunu Kazandiniz");
-                    System.out.println("Tebrikler");
-                    System.out.println("Tebrikler");
-                    System.out.println("Tebrikler");
-                    
-                }
-                
             }
             }else {
                 return false;
             }
+            
         }
+        if(this.getCanavarlar().getName() != "Yilan"){
+            oyunuBitimiKontrol();
+        }
+        
 
         return true;
     }
 
+    public void oyunuBitimiKontrol(){
+        String [] oyunBittimi = this.getPlayer().getEnvanter().getOyunBitirecekEsyalar();
+        String [] kontrolBittimi =this.getPlayer().getEnvanter().getEldeEdilenEsya();
+        odul = this.getOdul();
+        System.out.println(" \n Kazandiginiz Odul : \t " + this.getOdul());
+       
+        kontrolBittimi[this.getPlayer().getEnvanter().getIndex()] = odul;
+        this.getPlayer().getEnvanter().setIndex(this.getPlayer().getEnvanter().getIndex()+1);
+        
+        for(String  a : oyunBittimi){
+            System.out.println("\nGerekenler:\t" + a);
+        }
+
+        for(String b : kontrolBittimi){
+            System.out.println("\nSizdekiler\t" + b);
+        }
+
+        if(Arrays.equals(oyunBittimi, kontrolBittimi)){
+            System.out.println("\n\t\tOyunu Kazandiniz");
+            System.out.println("\n\t\tTebrikler");
+            System.out.println("\n\t\tTTebrikler");
+            System.out.println("\n\t\tTTebrikler");
+            System.exit(0);
+        }
+    }
     public void yilandanHediyeler(){
 
         Random rnd = new Random();

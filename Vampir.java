@@ -1,7 +1,7 @@
 public class Vampir extends Canavarlar{
 
     public Vampir() {
-        super(2, "Vampir", 4, 14,7);
+        super(2, "Vampir", 9, 16,7);
     
     }
 
