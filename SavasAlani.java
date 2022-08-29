@@ -87,8 +87,8 @@ public abstract class SavasAlani extends Mekanlar{
                 this.getPlayer().setPara(this.getPlayer().getPara()+this.getCanavarlar().getKazanilackPara());
                 System.out.println("Guncel paraniz:\t" + this.getPlayer().getPara());
                 
-                String [] oyunBittimi = getPlayer().getEnvanter().getOyunBitirecekEsyalar();
-                String [] konrolBittimi =getPlayer().getEnvanter().getEldeEdilenEsya();
+                String [] oyunBittimi = this.getPlayer().getEnvanter().getOyunBitirecekEsyalar();
+                String [] konrolBittimi =this.getPlayer().getEnvanter().getEldeEdilenEsya();
                 String odul = this.getOdul();
                 Arrays.fill( konrolBittimi , odul );
                 
@@ -126,38 +126,42 @@ public abstract class SavasAlani extends Mekanlar{
         else if(olasilik >45 && olasilik <61){
             System.out.println("Silah Kazanacaksiniz");
                 if(olasilik1<51){
-                    //this.getPlayer().getEnvanter().setSilah(Silahlar.getSilahlarObjBYID(1));
+                    this.getPlayer().getEnvanter().setSilah(Silahlar.getSilahlarObjBYID(1));
                 }
                 else if(olasilik1>70){
                     //kiliv
+                    this.getPlayer().getEnvanter().setSilah(Silahlar.getSilahlarObjBYID(2));
                 }
                 else{
                     //tüfek
+                    this.getPlayer().getEnvanter().setSilah(Silahlar.getSilahlarObjBYID(3));
                 }
 
         }
         else if(olasilik>75){
             System.out.println("Para Kazanacaksiniz");
             if(olasilik1<51){
-                //tabanca
+                this.getPlayer().setPara(this.getPlayer().getPara()+1);
             }
             else if(olasilik1>70){
-                //kiliv
+                this.getPlayer().setPara(this.getPlayer().getPara()+5);
             }
             else{
-                //tüfek
+                this.getPlayer().setPara(this.getPlayer().getPara()+10);
             }
         }
         else {
             System.out.println("Zirh Kazanacaksiniz");
             if(olasilik1<51){
-                //tabanca
+                
+                this.getPlayer().getEnvanter().setZirh(Zirhlar.getZirhlarObjBYID(1));
             }
             else if(olasilik1>70){
-                //kiliv
+                
+                this.getPlayer().getEnvanter().setZirh(Zirhlar.getZirhlarObjBYID(2));
             }
             else{
-                //tüfek
+                this.getPlayer().getEnvanter().setZirh(Zirhlar.getZirhlarObjBYID(3));
             }
         }
     }
