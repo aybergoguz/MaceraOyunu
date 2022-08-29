@@ -19,7 +19,7 @@ public abstract class SavasAlani extends Mekanlar{
     @Override
     boolean onLocation() {
         int canavarSayisi = this.randomCanavarSayisi();
-
+   
         System.out.println("\nSuan burdasiniz:\t" + this.getName());
         System.out.println("\nDikkatli ol burda  " + canavarSayisi + " tane " 
                                 + this.getCanavarlar().getName() + "  yasiyor.");
@@ -60,7 +60,8 @@ public abstract class SavasAlani extends Mekanlar{
                         this.getPlayer().setSaglik(this.getPlayer().getSaglik() - this.getCanavarlar().getHasar());
                         afterHit();
                     }
-                }else{
+                }
+                else{
                     System.out.println("\nCanavar size vurdu !");
                         this.getPlayer().setSaglik(this.getPlayer().getSaglik() - this.getCanavarlar().getHasar());
                         afterHit();
@@ -79,19 +80,23 @@ public abstract class SavasAlani extends Mekanlar{
             
             if(this.getCanavarlar().getSaglik() < this.getPlayer().getSaglik()){
                 System.out.println("Dusmani Yendiniz !");
+                if(this.getCanavarlar().getName() == "Yilan"){
+                    yilandanHediyeler();
+                }else{
                 System.out.println(this.getCanavarlar().getKazanilackPara() + "para kazandiniz.");
                 this.getPlayer().setPara(this.getPlayer().getPara()+this.getCanavarlar().getKazanilackPara());
                 System.out.println("Guncel paraniz:\t" + this.getPlayer().getPara());
-                yilandanHediyeler();
-                String [] oyunBittimi = getPlayer().getEnvanter().getOyunBitirecekEsyalar();
-                String [] konrolBittimi ={};
-                Arrays.fill( konrolBittimi , this.getOdul() );
                 
-                for(String a : oyunBittimi){
-                    System.out.println("Gerekenler" + a);
+                String [] oyunBittimi = getPlayer().getEnvanter().getOyunBitirecekEsyalar();
+                String [] konrolBittimi =getPlayer().getEnvanter().getEldeEdilenEsya();
+                String odul = this.getOdul();
+                Arrays.fill( konrolBittimi , odul );
+                
+                for(String  a : oyunBittimi){
+                    System.out.println("\nGerekenler:\t" + a);
                 }
                 for(String b : konrolBittimi){
-                    System.out.println("Sizdekiler" + b);
+                    System.out.println("\nSizdekiler\t" + b);
                 }
                 if(Arrays.equals(oyunBittimi, konrolBittimi)){
                     System.out.println("Oyunu Kazandiniz");
@@ -101,7 +106,7 @@ public abstract class SavasAlani extends Mekanlar{
                     
                 }
                 
-                
+            }
             }else {
                 return false;
             }
@@ -110,7 +115,7 @@ public abstract class SavasAlani extends Mekanlar{
         return true;
     }
 
-    public static void yilandanHediyeler(){
+    public void yilandanHediyeler(){
 
         Random rnd = new Random();
         int olasilik = rnd.nextInt(100)+1;
